@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomestayController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +19,17 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+
+    // List homestay
+    Route::get('/homestays', [HomestayController::class, 'index'])->name('homestays.index');
+
+    // Detail homestay
+    Route::get('/homestays/{id}', [HomestayController::class, 'show'])->name('homestays.show');
+
+    // Search / filter (optional)
+    
+
+});
+
