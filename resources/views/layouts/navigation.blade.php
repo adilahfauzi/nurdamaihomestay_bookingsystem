@@ -43,7 +43,7 @@
                         <button class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-xl text-white transition"
                                 style="background: linear-gradient(135deg, #352A86, #C41E75);">
 
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->name ?? 'Guest' }}</div>
 
                             <div class="ms-2">
                                 <svg class="fill-current h-4 w-4"
