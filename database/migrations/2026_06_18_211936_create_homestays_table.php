@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homestays', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        $table->id();
+        $table->string('name');
+        $table->text('description')->nullable();
+        $table->decimal('price_per_night', 8, 2);
+        $table->string('location');
+        $table->string('image')->nullable();
+        $table->timestamps();
         });
     }
 
