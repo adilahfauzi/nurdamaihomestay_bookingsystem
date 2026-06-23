@@ -1,82 +1,85 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<div class="max-w-3xl mx-auto py-10">
 
-<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+    <div class="bg-white shadow-xl rounded-2xl p-8">
 
-    <h2 class="text-2xl font-bold text-green-700 mb-6">
-        Add Review
-    </h2>
+        <h1 class="text-3xl font-bold text-purple-700 mb-6">
+            Add Review
+        </h1>
 
-    <form action="{{ route('reviews.store') }}" method="POST">
+        <form action="{{ route('reviews.store') }}"
+              method="POST">
 
-        @csrf
+            @csrf
 
-        <div class="mb-4">
-            <label class="font-semibold">
-                Homestay
-            </label>
+            <div class="mb-4">
 
-            <select name="homestay_id"
-                    class="w-full border rounded p-2">
+                <label>Homestay</label>
 
-                @foreach($homestays as $homestay)
+                <select name="homestay_id"
+                    class="w-full border rounded-lg p-3">
 
-                    <option value="{{ $homestay->id }}">
-                        {{ $homestay->name }}
-                    </option>
+                    @foreach($homestays as $home)
 
-                @endforeach
+                        <option value="{{ $home->id }}">
+                            {{ $home->name }}
+                        </option>
 
-            </select>
-        </div>
+                    @endforeach
 
-        <div class="mb-4">
-            <label class="font-semibold">
-                Reviewer Name
-            </label>
+                </select>
 
-            <input type="text"
-                   name="reviewer_name"
-                   class="w-full border rounded p-2">
-        </div>
+            </div>
 
-        <div class="mb-4">
-            <label class="font-semibold">
-                Rating
-            </label>
+            <div class="mb-4">
 
-            <select name="rating"
-                    class="w-full border rounded p-2">
+                <label>Name</label>
 
-                <option value="1">⭐ 1 Star</option>
-                <option value="2">⭐⭐ 2 Stars</option>
-                <option value="3">⭐⭐⭐ 3 Stars</option>
-                <option value="4">⭐⭐⭐⭐ 4 Stars</option>
-                <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
+                <input type="text"
+                    name="reviewer_name"
+                    class="w-full border rounded-lg p-3">
 
-            </select>
-        </div>
+            </div>
 
-        <div class="mb-4">
-            <label class="font-semibold">
-                Comment
-            </label>
+            <div class="mb-4">
 
-            <textarea name="comment"
-                      rows="5"
-                      class="w-full border rounded p-2"></textarea>
-        </div>
+                <label>Rating</label>
 
-        <button type="submit"
-                class="bg-green-600 text-white px-5 py-2 rounded">
+                <select name="rating"
+                    class="w-full border rounded-lg p-3">
 
-            Submit Review
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="1">⭐</option>
 
-        </button>
+                </select>
 
-    </form>
+            </div>
+
+            <div class="mb-4">
+
+                <label>Comment</label>
+
+                <textarea name="comment"
+                    rows="4"
+                    class="w-full border rounded-lg p-3"></textarea>
+
+            </div>
+
+            <button
+                class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-xl">
+
+                Submit Review
+
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
-@endsection
+</x-app-layout>

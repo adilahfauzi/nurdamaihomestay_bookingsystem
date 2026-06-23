@@ -10,7 +10,9 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Review::with('homestay')->latest()->get();
+        $reviews = Review::with('homestay')
+            ->latest()
+            ->get();
 
         return view('reviews.index', compact('reviews'));
     }
@@ -33,31 +35,39 @@ class ReviewController extends Controller
 
         Review::create($request->all());
 
-        return redirect()->route('reviews.index')
-                         ->with('success', 'Review added successfully');
+        return redirect()
+            ->route('reviews.index')
+            ->with('success', 'Review submitted successfully!');
     }
 
-    public function edit(Review $review)
+    public function edit($id)
     {
+        $review = Review::findOrFail($id);
         $homestays = Homestay::all();
 
-        return view('reviews.edit',
-            compact('review', 'homestays'));
+        return view('reviews.edit', compact(
+            'review',
+            'homestays'
+        ));
     }
 
-    public function update(Request $request, Review $review)
+    public function update(Request $request, $id)
     {
+        $review = Review::findOrFail($id);
+
         $review->update($request->all());
 
-        return redirect()->route('reviews.index')
-                         ->with('success', 'Review updated');
+        return redirect()
+            ->route('reviews.index')
+            ->with('success', 'Review updated successfully!');
     }
 
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        $review->delete();
+        Review::destroy($id);
 
-        return redirect()->route('reviews.index')
-                         ->with('success', 'Review deleted');
+        return redirect()
+            ->route('reviews.index')
+            ->with('success', 'Review deleted successfully!');
     }
 }
