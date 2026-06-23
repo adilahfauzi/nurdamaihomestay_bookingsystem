@@ -11,21 +11,20 @@ class Homestay extends Model
 
     protected $fillable = [
         'name',
-        'location',
-        'price_per_night',
-        'capacity',
-        'image',
         'description',
-        'facilities',
+        'price_per_night',
+        'location',
+        'image',
+        'property_type',
+        'star_rating',
+        'capacity',
     ];
 
-    // Relationship dengan Review
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    // Relationship dengan HomestayImage
     public function images()
     {
         return $this->hasMany(HomestayImage::class, 'homestay_id');
