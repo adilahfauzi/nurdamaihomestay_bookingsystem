@@ -10,7 +10,7 @@
                 <option value="">Recent</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price : Affordable to Pricey</option>
                 <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: Pricey to Affordable</option>
-                <option value="capacity_desc" {{ request('sort') == 'capacity_desc' ? 'selected' : '' }}>Capacity: Large to Small</option>
+                <option value="rating_desc"{{ request('sort') == 'rating_desc' ? 'selected' : '' }}>Highest Rating</option>
             </select>
         </form>
     </div>

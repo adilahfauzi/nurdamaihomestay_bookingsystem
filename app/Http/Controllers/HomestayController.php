@@ -19,9 +19,9 @@ class HomestayController extends Controller
                 $query->orderBy('price_per_night', 'asc'); // Harga: Rendah ke Tinggi
             } elseif ($request->sort == 'price_desc') {
                 $query->orderBy('price_per_night', 'desc'); // Harga: Tinggi ke Rendah
-            } elseif ($request->sort == 'capacity_desc') {
-                $query->orderBy('capacity', 'desc'); // Kapasiti: Besar ke Kecil
-            }
+            } elseif ($request->sort == 'rating_desc') {
+        $query->orderBy('star_rating', 'desc');
+    }
         } else {
             // Susunan default jika user baru buka page (contoh: yang terbaru didaftar)
             $query->orderBy('created_at', 'desc');
