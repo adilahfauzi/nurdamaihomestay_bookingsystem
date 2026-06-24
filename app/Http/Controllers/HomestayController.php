@@ -19,6 +19,10 @@ class HomestayController extends Controller
             $query->orderBy('price_per_night', 'desc');
         }
 
+        elseif ($request->sort == 'rating_asc') {
+            $query->orderBy('star_rating', 'asc');
+        }
+        
         elseif ($request->sort == 'rating_desc') {
             $query->orderBy('star_rating', 'desc');
         }

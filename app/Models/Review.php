@@ -14,6 +14,7 @@ class Review extends Model
         'reviewer_name',
         'rating',
         'comment',
+        'photo',
     ];
 
     public function homestay()

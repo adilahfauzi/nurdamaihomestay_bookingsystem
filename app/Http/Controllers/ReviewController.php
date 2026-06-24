@@ -27,13 +27,33 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'homestay_id' => 'required',
+            'homestay_id'   => 'required',
             'reviewer_name' => 'required',
-            'rating' => 'required',
-            'comment' => 'required'
+            'rating'        => 'required',
+            'comment'       => 'required',
+            'photo'         => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        Review::create($request->all());
+        $photoName = null;
+
+        if ($request->hasFile('photo')) {
+
+            $photoName = time() . '_' .
+                $request->file('photo')->extension();
+
+            $request->file('photo')->move(
+                public_path('review_images'),
+                $photoName
+            );
+        }
+
+        Review::create([
+            'homestay_id'   => $request->homestay_id,
+            'reviewer_name' => $request->reviewer_name,
+            'rating'        => $request->rating,
+            'comment'       => $request->comment,
+            'photo'         => $photoName,
+        ]);
 
         return redirect()
             ->route('reviews.index')

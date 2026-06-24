@@ -1,4 +1,3 @@
-```php
 <x-app-layout>
 
 <div class="max-w-3xl mx-auto py-10">
@@ -122,5 +121,4 @@
 </div>
 
 </x-app-layout>
-```
 
