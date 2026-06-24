@@ -15,21 +15,15 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
-            $table->string('homestay_name');
+            $table->foreignId('homestay_id')->constrained()->onDelete('cascade');
 
             $table->date('check_in');
             $table->date('check_out');
-
             $table->integer('guests');
+            $table->decimal('total_price', 10, 2)->default(0);
 
-            $table->decimal('total_price', 10, 2);
-
-            $table->enum('status', [
-                'Pending',
-                'Approved',
-                'Rejected'
-            ])->default('Pending');
+            $table->enum('status', ['Pending', 'Approved', 'Rejected', 'Cancelled'])
+              ->default('Pending');
 
             $table->timestamps();
         });
