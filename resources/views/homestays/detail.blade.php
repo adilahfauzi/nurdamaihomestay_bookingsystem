@@ -74,6 +74,14 @@
                 </div>
             </div>
 
+            <div class="mb-8">
+                <a href="{{ route('bookings.create', $homestay->id) }}"
+                    class="inline-block w-full text-center px-8 py-4 rounded-xl text-white font-bold text-lg"
+                    style="background: linear-gradient(135deg, #352A86, #C41E75);">
+                    Book Now
+                </a>
+            </div>
+
             <!-- Penerangan (Description) -->
             <div class="mb-6">
                 <h3 class="text-lg font-bold text-gray-800 mb-2">Description</h3>
