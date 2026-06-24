@@ -11,30 +11,16 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('reviews', function (Blueprint $table) {
-
+    Schema::create('homestay_images', function (Blueprint $table) {
         $table->id();
 
         $table->foreignId('homestay_id')
               ->constrained()
               ->onDelete('cascade');
 
-        $table->string('reviewer_name');
-
-        $table->integer('rating');
-
-        $table->text('comment');
+        $table->string('image_path');
 
         $table->timestamps();
     });
-
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('reviews');
-    }
+}
 };
